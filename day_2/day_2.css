@@ -1,0 +1,58 @@
+/* body, html {
+    height: 100%;
+    margin: 0;
+} */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+.center {
+    width: 300px;
+    height: 200px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    line-height: 200px;
+    cursor: pointer;
+}
+
+/* existing styles... */
+
+.menu-icon {
+    display: grid;
+    column-gap: 25%;
+    margin: 10%;
+    width: 80%;
+    height: 0.5rem;
+    cursor: pointer;
+    z-index: 10;
+    gap: 2.5rem;
+    transition: all 0.3s ease;
+}
+
+.line-1, .line-2, .line-3 {
+    height: 1rem;
+    width: 100%;
+    background: #f0f0f0;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+}
+
+.menu-icon.active .line-1 {
+    transform: rotate(32.5deg);
+    position: relative;
+    top: 4rem;
+}
+
+.menu-icon.active .line-2 {
+    opacity: 0;
+}
+
+.menu-icon.active .line-3 {
+    transform: rotate(-32.5deg);
+    position: relative;
+    top: -3rem;
+}
