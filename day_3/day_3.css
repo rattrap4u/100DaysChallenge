@@ -37,17 +37,25 @@
 }
 @keyframes sky-turns-black {
     0% {
-      background: #272C34;
+      background: #fd9402;
+    }
+    15% {
+        background: #f4aa22;
     }
       
       30% {
           background: #7DDFFC;
       }
       
-      70% {
+      65% {
           background: #7DDFFC;
       }
-  
+      85% {
+        background: rgb(241, 156, 18);
+      }
+      95% {
+        background: rgb(75, 36, 2);
+      } 
     100% {
       background: #272C34;
     }
