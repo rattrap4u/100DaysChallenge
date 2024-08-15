@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #560ceb;
+}
+
+.frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 400px;
+    margin-top: -200px;
+    margin-left: -200px;
+    border-radius: 2px;
+    box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.3);
+    background: #E56262;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center {
+    position: relative;
+    width: 220px;
+    height: 220px;
+}
+
+.dot-1, .dot-2, .dot-3 {
+    position: absolute;
+    border-radius: 50%;
+    background: #ff0505;
+    box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.2);
+    animation-fill-mode: both;
+}
+
+.dot-1 {
+    position: absolute;
+	z-index: 3;
+	width: 30px;
+	height: 30px;
+	top: 95px;
+	left: 95px;
+	background: #870290;
+	border-radius: 50%;
+	animation-fill-mode: both;
+    animation: pulse-1 3s infinite alternate;
+}
+
+.dot-2 {
+    position: absolute;
+	z-index: 2;
+	width: 60px;
+	height: 60px;
+	top: 80px;
+	left: 80px;
+	background: #02de1f;
+	border-radius: 50%;
+	animation-fill-mode: both;
+    animation: pulse-2 3s infinite alternate;
+}
+
+.dot-3 {
+    position: absolute;
+	z-index: 1;
+	width: 90px;
+	height: 90px;
+	top: 65px;
+	left: 65px;
+	background: #f77a05;
+	border-radius: 50%;
+	animation-fill-mode: both;
+    animation: pulse-3 3s infinite alternate;
+}
+
+
+@keyframes pulse-1 {
+	0%, 70% {
+		box-shadow: 2px 2px 3px 2px rgba(0,0,0,0.2);
+		transform: scale(0);
+	}
+
+	100% {
+		box-shadow: 10px 10px 15px 0 rgba(0,0,0,0.3);
+		transform: scale(1);
+	}
+}
+
+@keyframes pulse-2 {
+	0%, 40% {
+		box-shadow: 2px 2px 3px 2px rgba(0,0,0,0.2);
+		transform: scale(0);
+	}
+
+	100% {
+		box-shadow: 10px 10px 15px 0 rgba(0,0,0,0.3);
+		transform: scale(1);
+	}
+}
+
+@keyframes pulse-3 {
+	0%, 10% {
+		box-shadow: 2px 2px 3px 2px rgba(0,0,0,0.2);
+		transform: scale(0);
+	}
+
+	100% {
+		box-shadow: 10px 10px 15px 0 rgba(0,0,0,0.3);
+		transform: scale(1);
+	}
+}
