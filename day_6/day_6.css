@@ -1,0 +1,25 @@
+.main{
+    height: 100vh;
+    
+    
+}
+
+.body, .mask {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #afa18f;
+    font-size: 4rem;
+    line-height: 66px;
+    cursor: default;
+}
+
+span {
+    color: #ec4e39;
+}
+
+p {
+    width: 75%;
+}

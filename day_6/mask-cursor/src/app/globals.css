@@ -1,0 +1,33 @@
+body {
+    background-color: hsl(0, 0%, 6%);
+    margin: 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+
+
+
+/* Blob css */
+/* 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: rgb(0, 0, 0);
+}
+
+.blob {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: #fff;
+} */
