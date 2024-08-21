@@ -7,7 +7,7 @@ import useMousePosition from "./utils/useMousePosition";
 export default function Home() {
   const [isHovered, setIsHovered] = useState(false);
   const { x, y } = useMousePosition();
-  const size = isHovered ? 500 : 40;
+  const size = isHovered ? 700 : 40;
 
   return (
     <main className={styles.main}>

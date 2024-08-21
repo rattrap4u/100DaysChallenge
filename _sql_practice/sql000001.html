@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion with Background Music</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .accordion {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .accordion-header {
+            background-color: aquamarine;
+            width: 100%;
+            color: #666;
+            cursor: pointer;
+            padding: 1rem;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: #aef0e2;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background-color: rgba(130, 31, 222, 0.479);
+            padding: 0 1rem;
+        }
+
+        .accordion-content p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <audio id="backgroundMusic" autoplay loop>
+            <source src="underground.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <button id="playButton" class="play-button">Play Background Music</button>
+
+        <div class="accordion">
+            <div class="accordion-item">
+                <button class="accordion-header">What is a database?</button>
+                <div class="accordion-content">
+                    <p>A database is a structured collection of data organized for efficient retrieval, storage, and manipulation...</p>
+                    <audio id="accordionAudio">
+                        <source src="transition.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">What is a database?</button>
+                <div class="accordion-content">
+                    <p>A database is a structured collection of data organized for efficient retrieval, storage, and manipulation...</p>
+                    <audio id="accordionAudio">
+                        <source src="cameraTransition.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">What is a database?</button>
+                <div class="accordion-content">
+                    <p>A database is a structured collection of data organized for efficient retrieval, storage, and manipulation...</p>
+                    <audio id="accordionAudio">
+                        <source src="hover.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Select all accordion headers
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const audio = content.querySelector('audio');
+
+                // Close all other accordion items
+                document.querySelectorAll('.accordion-content').forEach(otherContent => {
+                    if (otherContent !== content) {
+                        otherContent.style.maxHeight = null; // Close other accordion
+                        const otherAudio = otherContent.querySelector('audio');
+                        if (otherAudio) {
+                            otherAudio.pause(); // Pause other audio
+                        }
+                    }
+                });
+
+                // Toggle the clicked accordion item
+                this.classList.toggle('active');
+
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null; // Close the accordion
+                    audio.pause(); // Pause the audio
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px"; // Open the accordion
+                    audio.currentTime = 0; // Reset the audio position
+                    audio.play().catch(err => {
+                        console.error('Error playing audio:', err);
+                        alert('Audio playback failed. Please check the audio file.');
+                    }); // Play the audio
+                }
+            });
+        });
+
+        // Play background music on button click
+        const playButton = document.getElementById('playButton');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+
+        playButton.addEventListener('click', function() {
+            backgroundMusic.currentTime = 0; // Reset to start
+            backgroundMusic.play().catch(err => {
+                console.error('Error playing background music:', err);
+                alert('Background music playback failed. Please check the audio file.');
+            });
+            this.style.display = 'none'; // Hide the play button after clicking
+        });
+    </script>
+</body>
+</html>

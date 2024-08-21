@@ -1,0 +1,39 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.accordion {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.accordion-header {
+    background-color: aquamarine;
+    width: 100%;
+    color: #666;
+    cursor: pointer;
+    padding: 1rem;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+    background-color: aquamarine;
+}
+
+.accordion-content {
+    /* display: none; */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background-color: rgba(130, 31, 222, 0.479);
+    padding: 0 1rem;
+}
+
+accordion-content p {
+    margin: 10px 0;
+}
