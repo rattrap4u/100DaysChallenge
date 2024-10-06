@@ -1,0 +1,195 @@
+Database :- 
+It is a collection of data in format that can be easily accessed.
+A software application used to manage our DB is called DBMS
+
+Types of Databases
+
+1. Relational Database (RDBMS)
+    - Data stored in tables.
+    - MySQL, SQL Server, Oracle, PostgreSQL
+
+2. Non Relational Database (NoSQL)
+    - Data not stored in tables.
+    - MongoDB
+
+SQL :-
+* Structured Query Language is a domain-specific language used to manage data, especially in a relational database management system. It is particularly useful in handling structured data.
+
+- It is used to perform CRUD (Create, Read, Update, Delete) operations.
+- 
+
+
+
+To create a database
+- Create database DatabaseName;
+
+Drop :- is used to delete the table, column or database. 
+
+The DROP command serves multiple purposes:
+
+- DROP DATABASE: Deletes an entire database along with all its tables and data.
+- DROP TABLE: Deletes a specific table from a database.
+    - DROP DATABASE database_name;
+
+- DROP TABLE: Removes a specific table and all its associated data.
+    - DROP TABLE table_name;
+
+- DROP COLUMN: Deletes a column from an existing table.
+    - ALTER TABLE table_name DROP COLUMN column_name;
+
+- DROP INDEX: Removes an index from a table.
+    - DROP INDEX index_name ON table_name;
+
+- DROP CONSTRAINT: Deletes a constraint from a table.
+    - ALTER TABLE table_name DROP CONSTRAINT constraint_name;
+
+======================Key Points of Drop=====================
+
+1. Irreversibility: The DROP command is irreversible; once executed, the data and structure are permanently lost25.
+
+2. Caution Required: Always ensure that backups are taken before using the DROP command to prevent accidental data loss26.
+
+3. Impact on Relationships: Dropping a table invalidates all relationships and references to that table in other tables24.
+
+4. Multiple Drops: You can drop multiple tables in one command by listing them separated by commas:
+
+    --  DROP TABLE table1, table2;
+
+
+
+DROP Command
+The DROP command is used to completely remove an entire table or database from the database management system (DBMS). This action includes the deletion of all data, indexes, triggers, and constraints associated with that table or database.
+Key Characteristics:
+Type: Data Definition Language (DDL)
+Rollback Capability: Not possible; once executed, the action is permanent.
+Speed: Generally slower due to the overhead of removing the structure.
+Use of WHERE Clause: Not applicable; it removes the entire table or database.
+Impact on Indexes: All indexes associated with the table are removed.
+Integrity Constraints: Removed along with the table structure.
+
+
+DELETE Command
+The DELETE command allows for the removal of specific rows from a table based on conditions defined in a WHERE clause. This means you can selectively delete records without affecting the entire table.
+Key Characteristics:
+Type: Data Manipulation Language (DML)
+Rollback Capability: Possible; can be rolled back if wrapped in a transaction.
+Speed: Slower than TRUNCATE, as it deletes rows one by one and logs each deletion.
+Use of WHERE Clause: Required to specify which rows to delete.
+Impact on Indexes: Indexes remain intact; only the data is affected.
+Integrity Constraints: Remain intact unless explicitly dropped.
+
+
+TRUNCATE Command
+The TRUNCATE command is used to remove all rows from a table while retaining its structure for future use. Unlike DELETE, it does not log individual row deletions, which makes it significantly faster.
+Key Characteristics:
+Type: Data Definition Language (DDL)
+Rollback Capability: Not possible; once executed, the action is permanent.
+Speed: Faster than DELETE, as it deallocates entire data pages without logging individual deletions.
+Use of WHERE Clause: Not applicable; it removes all rows without conditions.
+Impact on Indexes: Indexes remain intact; only data is affected.
+Integrity Constraints: Remain intact; constraints are preserved.
+
+
+
+
+==========In summary==========
+
++ Use DROP when you want to completely remove a table or database along with all its associated data and structures.
+
++ Use DELETE when you need to remove specific records based on defined conditions, allowing for rollback if necessary.
+
++ Use TRUNCATE when you want to quickly remove all records from a table while preserving its structure for future use.
+
+
+
+
+==========SQL Datatypes==========
+=================================
+1. char - string(0,255) can store Characters of fixed length
+            above will take all the mentioned space and the remaining space will be reserved or will be left unoccupied or wasted
+            for ex. let say we take name char(20) if i store tushar  in it then it will take 6 space and remaining 14 space will be reserved and unutilized/wasted.
+- Can be faster for fixed-length data because its fixed size simplifies storage and retrieval operations.
+
+-  Best suited for storing data that is consistently of the same length, such as:
+    Fixed-length codes (e.g., country codes)
+    Identifiers (e.g., social security numbers) 
+
+2. varchar - string(0,255) can store Characters up to given length
+             it can hold up to n characters but uses only as much space as needed for the actual string, plus one or two bytes for storing the length of the string.
+
+-  May have slightly slower performance compared to CHAR due to the overhead of managing variable lengths.
+
+-  Ideal for storing data with varying lengths, such as:
+    Names
+    Email addresses
+    Descriptions
+
+3. Blob  - it is used to store binary data like images, audio, video etc.
+    can store upto 65,535 bytes upto 64 kb
+
+    other types of BLOB are TINYBLOB(0,255)upto 255bytes, BLOB(0,65535) upto 64KB, MEDIUMBLOB(0,16,777,215) upto 16mb, LONGBLOB(0,4,294,967,295) upto 4gb
+
+    ex. Video BLOB(65535)
+
+4.  int 2147483648  32 bit,
+    tiny int 127
+    big int 64bit
+
+5. Boolean  - it is used to store true or false values to implement boolean we use in the form of binary i.e. 0 and 1
+    to represent boolean we use tiny int 
+
+6. Float  - it is used to store decimal values
+it can store upto 23 decimal places
+
+7. Double   - it is used to store decimal values
+ it can store upto 24-53 decimal places
+
+8. Date   - it is used to store date values
+it can store upto 1000-01-01 to 9999-12-31
+
+9. Year 
+
+
+
+
+SQL Datatypes
+---------------
+
+Signed and Unsigned within the ranges.
+
+Types of SQL Commands
+------------------------
+DDL(Data Definition Language) : create, alter, rename, truncate & drop.
+DQL( Data Query Language) : select.
+DML(Data Manipulation Language) : insert, update, delete.
+DCL(Data Control Language) : grant, revoke permission to users
+TCL( Transaction Control Language) : start transaction, commit, rollback, savepoint.
+
+
+
+Database related queries
+--------------------------
+
+create Database db_name;
+
+create Database if not exists db_name;
+
+create Database if not exists college;
+
+drop database db_name;
+drop database if exists db_name;
+
+show database;
+show tables;
+
+use db_name;
+use college;
+
+
+Table related Queries
+=====================
+
+create table table_name (
+    rollno int primary key,
+    name varchar(25)
+);
