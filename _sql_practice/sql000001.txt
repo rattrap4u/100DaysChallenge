@@ -193,3 +193,128 @@ create table table_name (
     rollno int primary key,
     name varchar(25)
 );
+
+
+Table related Queries
+=====================
++++++++++++++SELECT+++++++++++++
+
+select * from table_name;
+select * from students;
+
++++++++++++++INSERT+++++++++++++
+
+insert into  table_name (col1, col2, col3) values (),();
+
+insert into students (rollno, name) values (101, "Tushar"), (102, "Rohan");
+
+
+
+
+------------------------------------------
+~~~~~~~~~~~~~~~~~~Practice~~~~~~~~~~~~~~~~
+------------------------------------------
+
+Create a database for your company named XYZ.
+
+1. create a table inside this db to store employee info(id, name, salary)
+2. add values inside the table 
+3. select and view all the table data.
+
+
+solution: - 
+
+create database if not exists xyz;
+create table employee(
+id int primary key,
+name varchar(20),
+salary decimal(10,2)
+);
+
+insert into employee(id, name, salary) values (1, "Ram", 25503.56), (2, "Shyam", 40565.78), (3,"Ghanshyam", 19458.63);
+
+select * from employee;
+
+
+
+==============================================
+~~~~~~~~~~~~~~~~~~~~~KEYS~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------------
+
+
+1. Primary KEYS
+---------------
+
+ Primary key is a column or set of columns in a table that uniquely identifies each record in a table. 
+
+ There should be  only one primary key in a table and it should be NOT null.
+ 
+2. Foreign KEYS
+---------------
+
+ Foreign key  is a column or set of columns in a table that refers to the primary key of another table.
+
+ There can be multiple  foreign keys in a table.
+ Foreign keys can have duplicate and null values.
+
+
+ 
+----------------------------------------------
+~~~~~~~~~~~~~~~~~~CONSTRAINT~~~~~~~~~~~~~~~~~~ 
+----------------------------------------------
+
+not null
+unique
+default
+check
+
+
+------------
+Primary key
+------------
+
+They are used to specify rules for data in a table.
+
+- NOT NULL  - columns cannot have a null value       id int not null
+- UNIQUE    - all values in column are different     id int unique
+- PRIMARY KEY   - makes a column unique and not null but used only for one    id int Primary Key
+
+create table temp1 (
+    id int,
+    name varchar(20),
+    age int,
+    city varchar(20),
+    primary key(id)
+);
+
+
+
+------------
+Foreign key
+------------
+
+It prevents actions that would destroy links between tables.
+
+create table temp2 (
+    cust_id int,
+    foreign key (cust_id) refrences customer(id)
+);
+
+default -  sets the default value of a column
+            in this if a user doesn't enter the value of the row then it will automatically put the existing value mentioned earlier.
+
+        salary int default 25000;
+
+
+check   -  it can limit the values allowed in a column.
+
+create table city(
+    id int primary key,
+    city varchar(50),
+    age int,
+    constraint age_check check (age >=18 and city='Delhi')
+);
+
+create table temp3 (
+    age int check (age >= 18)
+);
