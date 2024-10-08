@@ -392,11 +392,24 @@ select * from student where marks > 80 and city = "Mumbai";
 select * from student where marks > 80 or city = "Kolkata";
 select * from student where marks between 80 and 90;
 select * from student where city in ("Mumbai", "Kolkata");
+This query will include the rows where ever the city is Mumbai and Kolkata.
 select * from student where city not in ("Mumbai", "Kolkata");
 This query will exclude the rows where ever the city is Mumbai and Kolkata.
 
 
 
+==============================
+~~~~~~~~~Limit Clause~~~~~~~~~
+==============================
+
+sets an upper limit on number of (tuples) rows to be returned.
+
+select * from student limit 3;
 
 
 
+==============================
+~~~~~~~~~~~Order by~~~~~~~~~~~
+==============================
+
+To sort in ascending (ASC) or descending order (DESC)
