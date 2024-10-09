@@ -543,3 +543,94 @@ update student set marks =12 where roll = 105;
 
 delete from student where marks < 33;
 
+
+
+=============================================
+~~~~~~~~~~~More about Foreign KEYS~~~~~~~~~~~
+=============================================
+
+
+create table dept (
+    id int primary key,
+    name varchar(25)
+);
+
+create table teacher (
+    id int primary key,
+    name varchar(25),
+    dept_id  int,
+    foreign key (dept_id) references dept(id)
+    on update cascade
+    on delete cascade
+);
+
+
+================================================
+~~~~~~~~~~~Cascading for Foreign KEYS~~~~~~~~~~~
+================================================
+
+On delete cascade - When we create a foreign key using this option, it deletes 
+-----------------
+the referencing rows in the child table when the referenced row is deleted in the parent table which has a primary key.
+
+On update cascade - When we create aforeign key using update cascade the 
+-----------------
+referencing row are updated in the child table when the referenced row is updated in the parent table which has a primary key.
+
+create table student (
+    id int primary key,
+    courseID int, 
+    foreign key (courseID) references course(id)
+    on delete cascade
+    on update cascade
+);
+
+
+update dept set id = 111 where id = 101;
+
+
+
+=================================
+~~~~~~~~~~~Alter Query~~~~~~~~~~~
+=================================
+Alter - to change the schema(design of the table i.e. columns, datatype, constraints).
+
+The ALTER TABLE statement in Structured Query Language allows you to add, modify, and delete columns of an existing table. This statement also allows database users to add and remove various SQL constraints on the existing tables.
+
+ADD column 
+-----------
+ALTER table table_name ADD COLUMN column_name datatype constraint;
+alter table student add column age int not null default 19;
+
+
+DROP column
+------------
+ALTER table table_name DROP COLUMN column_name;
+alter table student drop column age;
+
+RENAME table
+-------------
+ALTER table table_name RENAME TO new_table_name;
+alter table student rename to students_name
+
+CHANGE column(rename)
+---------------------
+ALTER table table_name change column old_name new_name new_datatype new_constraint;
+alter table student change age student_age int default 18;
+
+
+MODIFY column (modify datatype/constraint)
+-------------------------------------------
+ALTER table table_name MODIFY column_name new_datatype new_constraint;
+alter table student modify age varchar(2);
+
+
+====================================
+~~~~~~~~~~~Truncate Query~~~~~~~~~~~
+====================================
+
+To delete the table's data
+
+TRUNCATE table table_name;
+
+DROP deletes the table  while TRUNCATE  deletes the table's data.
