@@ -413,3 +413,133 @@ select * from student limit 3;
 ==============================
 
 To sort in ascending (ASC) or descending order (DESC)
+
+select * from student  order by marks asc;
+select * from student  order by marks desc;
+select * from student  order by city asc;
+select * from student  order by city desc limit 2;
+
+
+
+=========================================
+~~~~~~~~~~~Aggregate Functions~~~~~~~~~~~
+=========================================
+
+Aggregate functions perform a calculation on a set of values, and return a single value.
+- COUNT()     - select count(roll) from student
+- MAX()       - select max(marks) from student;
+- MIN()       - select max(marks) from student;
+- SUM()       - select sum(marks) from student;
+- AVG()       - select avg(marks) from student;
+
+
+==============================
+~~~~~~~~~~~Group by~~~~~~~~~~~
+==============================
+
+Groups rows that have that same values into summary rows. 
+It collects data from multiple records and groups the result by one or more column.
+
+Generally we use group by with some aggregation function.
+
+-  select city, count(name) from student group by city;
+-  select city, count(roll) from student group by city;
+
+we need to add all the columns mentioned after select  keyword in group by clause also.
+
+-  select city, name, count(roll) from student group by city, name;
+
+
+
+
+==============================
+~~~~~~~~~~~Practice~~~~~~~~~~~
+==============================
+
+Write the query to find avg marks in each city in ascending order.
+
+select city, avg(marks) from student  group by city order by avg(marks) asc;
+
+select mode, count(customer) from payment group by mode;
+
+select grade, count(name) from student group by grade order by grade;
+
+
+
+
+===================================
+~~~~~~~~~~~Having Clause~~~~~~~~~~~
+===================================
+
+
+Similar to Where i.e. applies some condition on rows. i.e. to apply conditions on group of rows.
+Used when we want to apply any condition after grouping.
+
+Count number of students in each city where max marks cross 90.
+
+select city, count(name) from student group by city having max(marks) > 90;
+
+select city, count(roll) from student group by city having max(marks) > 90;
+
+
+
+===================================
+~~~~~~~~~~~General Order~~~~~~~~~~~
+===================================
+
+SELECT column(s) FROM table_name WHERE condition GROUP BY column(s) HAVING condition ORDER BY column(s) ASC/DESC;
+
+
+~ where applies condition on rows 
+~ having applies condition on groups
+
+~ where is put before group by and having is put after group by.
+
+
+select city from student where grade="A" group by city having max(marks) > 90 order by asc;
+
+
+===========================================
+~~~~~~~~~~~Table Related queries~~~~~~~~~~~
+===========================================
+
+Update - To update existing rows
+````````````````````````````````
+
+update table_name set col1=val1, col2=val2 where condition;
+
+update student set grade="O" where grade="A";
+
+
+
+=============================================================
+-------------------------------------------------------------
+To disable safe mode in SQL  to avoid making big changes that would affect the data.
+
+~  SET SQL_SAFE_UPDATES=0;    
+using this makes safe mode off.
+
+~  SET SQL_SAFE_UPDATES=1;    
+using this makes safe mode on again.
+
+
+-------------------------------------------------------------
+=============================================================
+
+
+update student set marks=82 where roll=105;
+
+update student set marks = marks + 1;
+
+
+Delete - To delete existing rows
+````````````````````````````````
+
+Delete from table_name where condition;
+
+DELETE from student WHERE marks < 33;
+
+update student set marks =12 where roll = 105;
+
+delete from student where marks < 33;
+
