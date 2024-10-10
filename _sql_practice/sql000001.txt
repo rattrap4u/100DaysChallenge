@@ -634,3 +634,79 @@ To delete the table's data
 TRUNCATE table table_name;
 
 DROP deletes the table  while TRUNCATE  deletes the table's data.
+
+
+
+
+
+====================================================
+
+====================================================
+
+===========================
+~~~~~~~~~~~Joins~~~~~~~~~~~
+===========================
+
+Join is used to combine rows from two or more tables, based on a related column between them. There are several types of joins: INNER JOIN, LEFT OUTER JOIN, RIGHT OUTER JOIN, FULL OUTER JOIN/FULL JOIN- PostgreSQL/UNION - mySQL.
+
+
+INNER JOIN
+----------
+
+Returns records that have matching values in both tables.
+
+select columns from tableA INNER JOIN tableB on tableA.col_name = tableB.col_name;
+tableA = student,
+tableB = course
+
+select * from student INNER JOIN course on student.student_id = course.student_id;
+
+~  using alias(alternate name)
+
+select * from student as s inner join course as c on s.student_id = c.student_id;
+
+
+LEFT JOIN
+----------
+Returns all records from the left  table and the matched records from the right table. The result is NULL on the right side if there is no match.
+
+select * from table student as s left join course as c on s.id = c.id;
+
+this will show the data of 1st table and then overlapping data of table 2 and then if there is no overlapping data in table 2 then it will show NULL in table 2.
+
+
+RIGHT JOIN
+----------
+Returns all records from the right table and the matched records from the left table. The result is NULL on the left side if there is no match.
+
+select * from table student as s right join course as c on s.id = c.id;
+
+this will show the data of 1st table and then overlapping data of table 2 and then if there is no overlapping data in table 2 then it will show NULL in table 2.
+
+
+FULL JOIN
+----------
+
+Returns all records when there is a match in either left or right table.
+
+syntax in mySQL
+
+LEFT JOIN UNION RIGHT JOIN
+
+select * from table student as s left join course as c on s.id = c.id
+UNION
+select * from table student as s right join course as c on s.id = c.id;
+
+
+
+LEFT EXCLUSIVE JOIN
+-------------------
+A left exclusive join would return all records from the left table and only those records from the right table that do not have a match in the left table.
+
+select * from student as s left join course as c on s.id = c.id where c.id is null
+
+RIGHT EXCLUSIVE JOIN
+--------------------
+A right exclusive join would return all records from the right table and only those records from the left table that do not have a match in the right table.
+
+select * from student as s right join course as c on s.id = c.id where c.id is null
