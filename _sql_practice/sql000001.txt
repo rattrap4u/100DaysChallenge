@@ -703,10 +703,74 @@ LEFT EXCLUSIVE JOIN
 -------------------
 A left exclusive join would return all records from the left table and only those records from the right table that do not have a match in the left table.
 
-select * from student as s left join course as c on s.id = c.id where c.id is null
+select * from student as s left join course as c on s.id = c.id where c.id is null;
 
 RIGHT EXCLUSIVE JOIN
 --------------------
 A right exclusive join would return all records from the right table and only those records from the left table that do not have a match in the right table.
 
-select * from student as s right join course as c on s.id = c.id where c.id is null
+select * from course as c right join student as s on s.id = c.id where s.id is null;
+
+-----------------------------OR-----------------------------
+
+select * from student as s right join course as c on s.id = c.id where s.id is null;
+
+
+FULL EXCLUSIVE JOIN
+--------------------
+
+
+
+
+
+
+
+SELF JOIN
+----------
+It is a regular join but the table is joined with itself.
+
+A self join in SQL is a technique used to join a table with itself. This allows for comparisons between rows within the same table, which is especially useful for hierarchical data or when establishing relationships between records.
+
+select column(s) from table1 as a join table2 as b on a.col_name = b.col_name;
+
+
+id      name        manager_id
+101     adam        103
+102     bob         104
+103     casey       null
+104     donald      103
+
+select a.name as manager_name, b.name from employee as a join employee as b on a.id = b.manager_id;
+
+a                                       b
+id      name        manager_id          id      name        manager_id
+
+
+
+
+select * from employee as a join employee as b on a.id = b.manager_id
+
+select a.name, b.name from employee as a join employee as b on a.id = b.manager_id;
+
+select a.name as manager b.name from employee as a join employee as b on a.id = b.manager_id;
+
+
+UNION
+------
+The UNION operator is used to combine the result-set of two or more SELECT statements.
+
+To use it
+----------
+every SELECT must have the same number of columns.
+columns  must have similar data types.
+columns in every SELECT should be in same order.
+
+select column from table1 UNION select column from table2;
+
+select name from employee union select name from employee; will provide common and unique  names from the table.
+
+
+UNION ALL
+---------
+It is used to provide the data of both the table without any changes in it.
+UNION all is used to perform full join in sql.
