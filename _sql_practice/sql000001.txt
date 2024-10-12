@@ -774,3 +774,77 @@ UNION ALL
 ---------
 It is used to provide the data of both the table without any changes in it.
 UNION all is used to perform full join in sql.
+
+select column from table1 UNION ALL select column from table2;
+
+
+
+
+
+=================
+SQL SUB QUERIES
+---------------
+=================
+A subquery or inner query or a nested query is a query within another sql query.
+
+It involves 2 select statements.
+
+select column(s) from table_name where col_name operator (subquery);
+ 
+We write our sub Queries inside 3 
+1. select
+2. from 
+3. **where**  -- mostly used
+
+select * from employee where salary > (select avg(salary) from employee);
+
+select avg(marks) from student;  -- this will tell the average marks of students.
+
+select name, marks from student where marks > (select avg(marks) from student);  ---  marks of students who marks are greater than average.
+
+??  -  find the names of all students with even roll numbers.
+!  - first find the evn roll numbers.
+!  - then find the names of students with even roll no.
+
+select roll from student where roll % 2 =0;
+
+select name, roll from student where roll in (select roll from student where roll % 2 =0);  -- this will give the names of students with even roll no.
+
+=====================
+use subquery in from
+---------------------
+=====================
+
+find the max marks from the students of Delhi.
+- find the students of Delhi.
+- find thier max marks using the sublist in step 1.
+
+select * from student where city='Delhi';
+
+select max(marks), name from (select * from student where city='Delhi') as temp;
+
+
+
+========================
+use subquery with SELECT
+------------------------
+========================
+
+
+
+======
+view
+======
+A view is a virtual table based on the result-set of an SQL statement.
+
+create view view1 as Select roll, name from student;
+
+select * from view1;
+
+select * from view1 where marks > 80;
+
+drop view view1;
+
+
+
+a View always shows up-to-date data. The database engine recreates the view, everytime a user queries it.
